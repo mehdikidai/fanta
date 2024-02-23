@@ -23,7 +23,8 @@
                 {{ imgx.text }}
               </p>
               <button class="toLinK">
-                Show More <i class="material-symbols-outlined"> arrow_right_alt </i>
+                Show More
+                <i class="material-symbols-outlined"> arrow_right_alt </i>
               </button>
             </div>
           </SplideSlide>
@@ -41,7 +42,7 @@
         <Splide
           :options="options"
           aria-label="My Favorite Images"
-          @splide:arrows:updated="xx"
+          @splide:arrows:updated="changePhoto"
         >
           <SplideSlide v-for="(imgx, i) in imgs" :key="i">
             <img
@@ -76,18 +77,15 @@
 </template>
 
 <script>
-import NavBar from "@/components/NavBar.vue";
-import fanta from "@/assets/photo/fanta.png";
-import x from "@/assets/photo/x.png";
-import y from "@/assets/photo/y.png";
-import fanta_1 from "@/assets/photo/fanta_1.jpg";
-import fanta_2 from "@/assets/photo/fanta_2.jpg";
-import fanta_3 from "@/assets/photo/fanta_3.jpg";
 
-import bluer from "@/assets/bluer.svg";
+import NavBar from "@/components/NavBar.vue";
+
+import { x, y, fanta_1, fanta_2, fanta_3, bluer, fanta } from "@/assets";
 
 import { Splide, SplideSlide } from "@splidejs/vue-splide";
+
 import "@splidejs/vue-splide/css";
+
 export default {
   name: "HomeView",
   components: {
@@ -128,7 +126,7 @@ export default {
       },
       options_2: {
         direction: "ttb",
-        height: "20rem",
+        height: "24rem",
         type: "loop",
       },
     };
@@ -149,7 +147,7 @@ export default {
       this.showEffect();
     },
 
-    xx() {
+    changePhoto() { //changePhoto
       const el = document.querySelector(".is-visible img");
       if (el) {
         this.$refs.home_div.style.backgroundColor = el.dataset.color;
@@ -170,171 +168,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@function Bshadow($r) {
-  @return 2px 4px 12px rgba(0, 0, 0, $r);
-}
-.home {
-  background: #fff;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  transition: all 0.3s linear;
-
-  .bluer {
-    position: fixed;
-    top: 50%;
-    right: 0 !important;
-    transform: translate(0, -50%);
-    width: 100rem;
-    aspect-ratio: 1;
-    img {
-      width: 100%;
-    }
-  }
-
-  .container {
-    width: 100%;
-    height: 70vh;
-    //background: #fff;
-    display: flex;
-    gap: 20px;
-    position: relative;
-    .btns {
-      position: fixed;
-      width: 110px;
-      height: 36px;
-      //background: red;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: 100px;
-      display: flex;
-      justify-content: space-between;
-      button {
-        width: 36px;
-        aspect-ratio: 1;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        border: none;
-        background: rgba(255, 255, 255, 0.2);
-        box-shadow: Bshadow(0.08);
-        i {
-          font-size: 20px;
-          color: #fff;
-        }
-      }
-    }
-    .box_ {
-      //background: #c7c7c7;
-      height: 100%;
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      &1 {
-        position: relative;
-        flex: 0.7;
-        .photo_f {
-          height: 90%;
-          aspect-ratio: 1;
-          position: absolute;
-          left: 0;
-          translate: -50% 0;
-          rotate: 0deg;
-          //background: red;
-          border-radius: 50%;
-          background-size: cover;
-          transform: scale(1);
-          opacity: 1;
-          transition: all 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
-        }
-        .photo_f_effect {
-          rotate: 0deg;
-          opacity: 1;
-          box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.4);
-          animation: photoR 1s cubic-bezier(0.22, 0.61, 0.36, 1);
-        }
-
-        @keyframes photoR {
-          0% {
-            rotate: -100deg;
-            //opacity: 0;
-            left: -50vw;
-          }
-          100% {
-            rotate: 0deg;
-            left: 0;
-            //opacity: 1;
-          }
-        }
-      }
-
-      &info {
-        //background: red;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: start;
-        gap: 40px;
-        height: 100% !important;
-
-        .t {
-          position: relative;
-          h2 {
-            font-size: 55px;
-            font-weight: 700;
-            color: #ffffff;
-            text-transform: uppercase;
-          }
-          span {
-            color: #fff9 !important;
-            margin-top: 10px;
-            position: relative;
-            top: 5px;
-            font-size: 14px;
-          }
-        }
-        p {
-          font-size: 18px;
-          text-align: left;
-          color: #fff;
-        }
-        .toLinK {
-          border: none;
-          border-radius: 6px;
-          background: #ffffff;
-          height: 44px;
-          width: 160px;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 6px;
-          font-size: 16px;
-          box-shadow: Bshadow(0.08);
-          i {
-            font-size: 20px;
-            transform: translateY(1px);
-          }
-        }
-      }
-      .img_drenk {
-        height: 94%;
-        rotate: 0deg;
-      }
-      .bg {
-        width: 100vw;
-        height: 500px;
-        position: fixed;
-        top: 0;
-        z-index: 999;
-      }
-    }
-  }
-}
+@use './HomeView'
 </style>

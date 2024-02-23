@@ -42,10 +42,11 @@ nav{
             font-size: 30px;
             color: #fff;
             text-transform: uppercase;
-            font-weight: 500;
+            font-weight: 800;
         }
         &:not(:first-child){
             color: #fff;
+            font-weight: 400;
         }
     }
 }

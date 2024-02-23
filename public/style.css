@@ -10,6 +10,11 @@
   display: none !important;
 }
 
+.splide__slide{
+  display: flex;
+  align-items: center;
+}
+
 @media only screen and (max-width: 1200px) {
   .home {
     display: none !important;
