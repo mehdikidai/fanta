@@ -1,6 +1,9 @@
 <template>
   <NavBar />
   <div class="home" ref="home_div">
+   <div class="bluer">
+    <img :src="bluer">
+   </div>
     <div ref="home_eff" class="eff"></div>
     <div ref="affect" class="color_effect"></div>
     <div class="container">
@@ -81,6 +84,8 @@ import fanta_1 from "@/assets/photo/fanta_1.jpg";
 import fanta_2 from "@/assets/photo/fanta_2.jpg";
 import fanta_3 from "@/assets/photo/fanta_3.jpg";
 
+import bluer from "@/assets/bluer.svg"
+
 import { Splide, SplideSlide } from "@splidejs/vue-splide";
 import "@splidejs/vue-splide/css";
 export default {
@@ -92,6 +97,7 @@ export default {
   },
   data() {
     return {
+      bluer,
       imgs: [
         {
           photo: y,
@@ -172,6 +178,18 @@ export default {
   justify-content: center;
   overflow: hidden;
   transition: all 0.3s linear;
+
+  .bluer{
+    position: fixed;
+    top: 50%;
+    right: 0 !important;
+    transform: translate(0,-50%);
+    width: 100rem;
+    aspect-ratio: 1;
+    img{
+      width: 100%;
+    }
+  }
 
   .container {
     width: 100%;
@@ -263,7 +281,7 @@ export default {
 
         .t {
           h2 {
-            font-size: 44px;
+            font-size: 55px;
             font-weight: 700;
             color: #ffffff;
             text-transform: uppercase;
