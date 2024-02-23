@@ -1,9 +1,9 @@
 <template>
   <NavBar />
   <div class="home" ref="home_div">
-   <div class="bluer">
-    <img :src="bluer">
-   </div>
+    <div class="bluer">
+      <img :src="bluer" />
+    </div>
     <div ref="home_eff" class="eff"></div>
     <div ref="affect" class="color_effect"></div>
     <div class="container">
@@ -23,7 +23,7 @@
                 {{ imgx.text }}
               </p>
               <button class="toLinK">
-                go to <i class="material-symbols-outlined"> arrow_right_alt </i>
+                Show More <i class="material-symbols-outlined"> arrow_right_alt </i>
               </button>
             </div>
           </SplideSlide>
@@ -84,7 +84,7 @@ import fanta_1 from "@/assets/photo/fanta_1.jpg";
 import fanta_2 from "@/assets/photo/fanta_2.jpg";
 import fanta_3 from "@/assets/photo/fanta_3.jpg";
 
-import bluer from "@/assets/bluer.svg"
+import bluer from "@/assets/bluer.svg";
 
 import { Splide, SplideSlide } from "@splidejs/vue-splide";
 import "@splidejs/vue-splide/css";
@@ -170,6 +170,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@function Bshadow($r) {
+  @return 2px 4px 12px rgba(0, 0, 0, $r);
+}
 .home {
   background: #fff;
   height: 100vh;
@@ -179,14 +182,14 @@ export default {
   overflow: hidden;
   transition: all 0.3s linear;
 
-  .bluer{
+  .bluer {
     position: fixed;
     top: 50%;
     right: 0 !important;
-    transform: translate(0,-50%);
+    transform: translate(0, -50%);
     width: 100rem;
     aspect-ratio: 1;
-    img{
+    img {
       width: 100%;
     }
   }
@@ -200,7 +203,7 @@ export default {
     position: relative;
     .btns {
       position: fixed;
-      width: 150px;
+      width: 110px;
       height: 36px;
       //background: red;
       left: 50%;
@@ -218,6 +221,7 @@ export default {
         border-radius: 50%;
         border: none;
         background: rgba(255, 255, 255, 0.2);
+        box-shadow: Bshadow(0.08);
         i {
           font-size: 20px;
           color: #fff;
@@ -280,16 +284,20 @@ export default {
         height: 100% !important;
 
         .t {
+          position: relative;
           h2 {
             font-size: 55px;
             font-weight: 700;
             color: #ffffff;
             text-transform: uppercase;
-            
           }
           span {
-              color: #fff9 !important;
-            }
+            color: #fff9 !important;
+            margin-top: 10px;
+            position: relative;
+            top: 5px;
+            font-size: 14px;
+          }
         }
         p {
           font-size: 18px;
@@ -298,16 +306,17 @@ export default {
         }
         .toLinK {
           border: none;
-          border-radius: 10px;
+          border-radius: 6px;
           background: #ffffff;
           height: 44px;
-          width: 140px;
+          width: 160px;
           cursor: pointer;
           display: flex;
           align-items: center;
           justify-content: center;
           gap: 6px;
           font-size: 16px;
+          box-shadow: Bshadow(0.08);
           i {
             font-size: 20px;
             transform: translateY(1px);
