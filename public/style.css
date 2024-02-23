@@ -1,0 +1,17 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+.splide__pagination{
+  display: none !important;
+}
+
+@media only screen and (max-width: 1200px) {
+  .home {
+    display: none !important;
+  }
+}
