@@ -201,7 +201,7 @@ export default {
     .btns {
       position: fixed;
       width: 150px;
-      height: 44px;
+      height: 36px;
       //background: red;
       left: 50%;
       transform: translateX(-50%);
@@ -209,7 +209,7 @@ export default {
       display: flex;
       justify-content: space-between;
       button {
-        width: 44px;
+        width: 36px;
         aspect-ratio: 1;
         cursor: pointer;
         display: flex;
