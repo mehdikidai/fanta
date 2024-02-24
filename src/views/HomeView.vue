@@ -1,11 +1,17 @@
 <template>
   <div class="divMobile">
-    <img :src="emoji">
+    <img :src="emoji" />
     <h1>The phone is not supported</h1>
   </div>
   <NavBar />
   <div class="home" ref="home_div">
     <div class="bluer">
+      <img :src="bluer" />
+    </div>
+    <div class="bluer bluer_2">
+      <img :src="bluer" />
+    </div>
+    <div class="bluer bluer_3">
       <img :src="bluer" />
     </div>
     <div ref="home_eff" class="eff"></div>
@@ -27,7 +33,7 @@
                 <h2>Lorem, ipsum.</h2>
               </div>
 
-              <p>
+              <p ref="txt">
                 {{ imgx.text }}
               </p>
               <button class="toLinK">
@@ -105,10 +111,11 @@ import {
   fanta,
   z,
   fanta_4,
-  emoji
+  emoji,
 } from "@/assets";
 
 import { Splide, SplideSlide } from "@splidejs/vue-splide";
+
 
 import "@splidejs/vue-splide/css";
 
@@ -125,16 +132,16 @@ export default {
       emoji,
       imgs: [
         {
-          photo: y,
-          color: "rgb(1, 160, 79)",
-          text: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem",
-          photo_2: fanta_1,
-        },
-        {
           photo: fanta,
           color: "#ff6000",
           text: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem",
           photo_2: fanta_2,
+        },
+        {
+          photo: y,
+          color: "rgb(1, 160, 79)",
+          text: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem",
+          photo_2: fanta_1,
         },
         {
           photo: x,
@@ -156,21 +163,21 @@ export default {
         width: "600px",
         fixedHeight: "70vh",
         focus: "center",
-        drag   : false,
+        drag: false,
       },
       options_2: {
         direction: "ttb",
         height: "24rem",
         type: "loop",
-        drag   : false,
+        drag: false,
       },
-      elementActive:0
+      elementActive: 0,
     };
   },
   mounted() {
     this.$refs.home_div.style.backgroundColor = this.imgs[0].color;
     this.$refs.photoF.style.backgroundImage = `url('${this.imgs[0].photo_2}')`;
-    this.elementActive = 0
+    this.elementActive = 0;
   },
   methods: {
     prevBtn() {
@@ -190,10 +197,9 @@ export default {
       if (el) {
         this.$refs.home_div.style.backgroundColor = el.dataset.color;
         this.$refs.photoF.style.backgroundImage = `url('${el.dataset.photo}')`;
-        console.log(el.dataset.id)
-        this.elementActive = Number(el.dataset.id)
+        console.log(el.dataset.id);
+        this.elementActive = Number(el.dataset.id);
       }
-      
     },
 
     showEffect() {
@@ -208,7 +214,7 @@ export default {
     goTo(n) {
       this.$refs.splide_img.splide.go(n);
       this.$refs.splide_txt.splide.go(n);
-      this.elementActive = n
+      this.elementActive = n;
       this.showEffect();
     },
   },
