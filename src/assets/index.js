@@ -7,5 +7,6 @@ export { default as fanta_3 } from "./photo/fanta_3.jpg";
 export { default as fanta_4 } from "./photo/fanta_4.jpg";
 export { default as fanta } from "./photo/fanta.png";
 export { default as bluer } from "./bluer.svg";
+export { default as emoji } from "./emoji.svg";
 
 

@@ -1,4 +1,8 @@
 <template>
+  <div class="divMobile">
+    <img :src="emoji">
+    <h1>The phone is not supported</h1>
+  </div>
   <NavBar />
   <div class="home" ref="home_div">
     <div class="bluer">
@@ -44,7 +48,7 @@
 
         <div class="pages">
           <button v-for="(el, i) in imgs" class="p" :key="i" @click="goTo(i)">
-            <img :src="el.photo" />
+            <img :class="elementActive === i ? 'active' : ''" :src="el.photo" />
           </button>
         </div>
       </div>
@@ -60,6 +64,7 @@
               ref="photo"
               :data-color="imgx.color"
               :data-photo="imgx.photo_2"
+              :data-id="i"
               class="img_drenk"
               :src="imgx.photo"
               :alt="i"
@@ -100,6 +105,7 @@ import {
   fanta,
   z,
   fanta_4,
+  emoji
 } from "@/assets";
 
 import { Splide, SplideSlide } from "@splidejs/vue-splide";
@@ -116,6 +122,7 @@ export default {
   data() {
     return {
       bluer,
+      emoji,
       imgs: [
         {
           photo: y,
@@ -149,17 +156,21 @@ export default {
         width: "600px",
         fixedHeight: "70vh",
         focus: "center",
+        drag   : false,
       },
       options_2: {
         direction: "ttb",
         height: "24rem",
         type: "loop",
+        drag   : false,
       },
+      elementActive:0
     };
   },
   mounted() {
     this.$refs.home_div.style.backgroundColor = this.imgs[0].color;
     this.$refs.photoF.style.backgroundImage = `url('${this.imgs[0].photo_2}')`;
+    this.elementActive = 0
   },
   methods: {
     prevBtn() {
@@ -179,7 +190,10 @@ export default {
       if (el) {
         this.$refs.home_div.style.backgroundColor = el.dataset.color;
         this.$refs.photoF.style.backgroundImage = `url('${el.dataset.photo}')`;
+        console.log(el.dataset.id)
+        this.elementActive = Number(el.dataset.id)
       }
+      
     },
 
     showEffect() {
@@ -194,6 +208,7 @@ export default {
     goTo(n) {
       this.$refs.splide_img.splide.go(n);
       this.$refs.splide_txt.splide.go(n);
+      this.elementActive = n
       this.showEffect();
     },
   },
