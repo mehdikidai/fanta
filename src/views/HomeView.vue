@@ -11,7 +11,11 @@
         <div class="photo_f" ref="photoF"></div>
       </div>
       <div class="box_ box_2">
-        <Splide :options="options_2" aria-label="My Favorite Images">
+        <Splide
+          :options="options_2"
+          aria-label="My Favorite Images"
+          ref="splide_txt"
+        >
           <SplideSlide v-for="(imgx, i) in imgs" :key="i">
             <div class="box_info">
               <div class="t">
@@ -37,12 +41,19 @@
             </button>
           </div>
         </Splide>
+
+        <div class="pages">
+          <button v-for="(el, i) in imgs" class="p" :key="i" @click="goTo(i)">
+            <img :src="el.photo" />
+          </button>
+        </div>
       </div>
       <div class="box_ box_3">
         <Splide
           :options="options"
           aria-label="My Favorite Images"
           @splide:arrows:updated="changePhoto"
+          ref="splide_img"
         >
           <SplideSlide v-for="(imgx, i) in imgs" :key="i">
             <img
@@ -77,10 +88,19 @@
 </template>
 
 <script>
-
 import NavBar from "@/components/NavBar.vue";
 
-import { x, y, fanta_1, fanta_2, fanta_3, bluer, fanta } from "@/assets";
+import {
+  x,
+  y,
+  fanta_1,
+  fanta_2,
+  fanta_3,
+  bluer,
+  fanta,
+  z,
+  fanta_4,
+} from "@/assets";
 
 import { Splide, SplideSlide } from "@splidejs/vue-splide";
 
@@ -99,7 +119,7 @@ export default {
       imgs: [
         {
           photo: y,
-          color: "#002c9f",
+          color: "rgb(1, 160, 79)",
           text: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem",
           photo_2: fanta_1,
         },
@@ -114,6 +134,12 @@ export default {
           color: "#65157f",
           text: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem",
           photo_2: fanta_3,
+        },
+        {
+          photo: z,
+          color: "rgb(173, 26, 38)",
+          text: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem",
+          photo_2: fanta_4,
         },
       ],
       options: {
@@ -147,7 +173,8 @@ export default {
       this.showEffect();
     },
 
-    changePhoto() { //changePhoto
+    changePhoto() {
+      //changePhoto
       const el = document.querySelector(".is-visible img");
       if (el) {
         this.$refs.home_div.style.backgroundColor = el.dataset.color;
@@ -163,10 +190,16 @@ export default {
         this.$refs.photoF.classList.add("photo_f_effect");
       }, 20);
     },
+
+    goTo(n) {
+      this.$refs.splide_img.splide.go(n);
+      this.$refs.splide_txt.splide.go(n);
+      this.showEffect();
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-@use './HomeView'
+@use "./HomeView";
 </style>

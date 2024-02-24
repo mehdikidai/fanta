@@ -36,7 +36,7 @@
       //background: red;
       left: 50%;
       transform: translateX(-50%);
-      bottom: 100px;
+      bottom: 50px;
       display: flex;
       justify-content: space-between;
       button {
@@ -64,11 +64,17 @@
       align-items: center;
       justify-content: center;
 
+      .is-visible h2 {
+        transform: translatex(0) !important;
+        transition: all .1s linear;
+        color: rgb(255, 255, 255) !important;
+      }
+
       &1 {
         position: relative;
-        flex: 0.7;
+        flex: 0.5;
         .photo_f {
-          height: 90%;
+          height: 80%;
           aspect-ratio: 1;
           position: absolute;
           left: 0;
@@ -118,6 +124,7 @@
             font-weight: 700;
             color: #ffffff;
             text-transform: uppercase;
+            transform: translatex(10px);
           }
           span {
             color: #fff9 !important;
@@ -127,6 +134,7 @@
             font-size: 14px;
           }
         }
+
         p {
           font-size: 20px;
           text-align: left;
@@ -162,6 +170,38 @@
         top: 0;
         z-index: 999;
       }
+
+      &2{
+        position: relative;
+        //background: red;
+        flex-direction: column;
+        align-items: start;
+        gap: 60px;
+        .pages{
+            height: 60px;
+            width: auto;
+            //background: red;
+           
+            bottom: 50px;
+            left: 0;
+            display: flex;
+            gap: 20px;
+            .p{
+                width: 80px;
+                aspect-ratio: 1;
+                border-radius: 12px;
+                border: none;
+                background: rgba(255, 255, 255, 0.2);
+                cursor: pointer;
+                box-shadow: Bshadow(0.08);
+                img{
+                    height: 100%;
+                    transform: translateY(-15px);
+                }
+            }
+          }
+      }
     }
   }
+  
 }
