@@ -4,4 +4,10 @@ import router from './router'
 import store from './store'
 import VueSplide from '@splidejs/vue-splide';
 
-createApp(App).use(store).use(router).use(VueSplide).mount('#app')
+const app = createApp(App)
+
+app.use(store)
+app.use(router)
+app.use(VueSplide)
+
+app.mount('#app')

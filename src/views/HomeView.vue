@@ -30,7 +30,7 @@
             <div class="box_info">
               <div class="t">
                 <span>Lorem ipsum dolor sit.</span>
-                <h2>Lorem, ipsum.</h2>
+                <h2>{{ imgx.name }}.</h2>
               </div>
 
               <p ref="txt">
@@ -132,24 +132,28 @@ export default {
       emoji,
       imgs: [
         {
+          name:"fanta",
           photo: fanta,
           color: "#ff6000",
           text: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem",
           photo_2: fanta_2,
         },
         {
+          name:"sprite",
           photo: y,
           color: "rgb(1, 160, 79)",
           text: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem",
           photo_2: fanta_1,
         },
         {
+          name:"fanta",
           photo: x,
           color: "#65157f",
           text: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem",
           photo_2: fanta_3,
         },
         {
+          name:"cola zero",
           photo: z,
           color: "rgb(173, 26, 38)",
           text: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem",
